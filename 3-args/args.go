@@ -9,6 +9,7 @@ import (
 func main() {
 	fmt.Println(os.Args)
 	// skip the first argument [ program name ]
+	//starting from the 1st index till the end of the list
 	args := os.Args[1:]
 	fmt.Println(args)
 	//err default value is nil
@@ -16,4 +17,5 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
+	//https://codeshare.io/G8gyWv
 }
