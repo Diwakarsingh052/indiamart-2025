@@ -20,6 +20,6 @@ func main() {
 	var f1 *FileDetails
 	// f1 is nil pointer
 	f1.UpdateName("abc")
-	f1.PrintName()
+	f1.PrintName() // panic
 
 }
