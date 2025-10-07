@@ -3,9 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	x := []int{10, 20, 30}
+	x := make([]int, 3, 100)
+	//x := []int{10, 20, 30}
 
-	//UpdateSlice(x, 0, 100)
+	UpdateSlice(x, 0, 100)
 	x = UpdateAndAppend(x, 0, 100)
 	fmt.Println(x)
 }
