@@ -17,6 +17,5 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	//https://codeshare.io/G8gyWv
-	//https://poll-maker.com/poll5606431xA17a40E8-165
+
 }
