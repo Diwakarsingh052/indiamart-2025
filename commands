@@ -3,3 +3,5 @@
 
 // GOOS=linux GOARCH=amd64 go build var.go
 // go run var.go // to run programs while developing
+
+// go run . // to run all the files in current directory
