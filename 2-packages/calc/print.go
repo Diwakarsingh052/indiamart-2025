@@ -1,7 +1,10 @@
 package calc
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func print(result int) {
 	fmt.Println(result)
+
 }

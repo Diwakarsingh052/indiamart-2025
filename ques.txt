@@ -10,3 +10,7 @@ Create a stringops package with three files.
          Internal Function: trimSpace(s string) string
     Call toUpperCase and trimSpace in TrimSpaceAndUppercase.
     Call TrimSpaceAndUppercase in package main
+
+    Use built in functions for the following tasks
+    	strings.TrimSpace()
+    	strings.ToUpper()
