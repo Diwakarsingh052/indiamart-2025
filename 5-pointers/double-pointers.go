@@ -10,15 +10,15 @@ var x = 10
 func main() {
 	var p *int // nil // default value of a pointer is nil
 	fmt.Println(&p, "address of p in the main func")
-	updateValue(&p) // copying nil to p1 pointer
+	updateValue(&p) // copying p address to p1 pointer
 
-	// this will panic
 	fmt.Println(*p)
 }
 
 func updateValue(p1 **int) {
 	fmt.Println(p1, "value of p1 in the updateValue func")
-	*p1 = &x   // updated nil pointer to a valid address
+	*p1 = &x   // updated p pointer to a valid address
 	**p1 = 200 // dereference and update the value
+	// it will update the value of p pointer from the main func
 
 }
