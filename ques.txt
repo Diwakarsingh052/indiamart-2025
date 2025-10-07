@@ -15,3 +15,13 @@ Create a stringops package with three files.
     pkg.go.dev
     	strings.TrimSpace()
     	strings.ToUpper()
+
+
+q2.
+    Create a greet function.
+    Greet function reads cmd line arguments from user input
+    input : Name, age, marks
+
+    After reading name,age and marks, convert age and marks to
+    integer
+    At the end print all the values
