@@ -12,5 +12,6 @@ Create a stringops package with three files.
     Call TrimSpaceAndUppercase in package main
 
     Use built in functions for the following tasks
+    pkg.go.dev
     	strings.TrimSpace()
     	strings.ToUpper()
