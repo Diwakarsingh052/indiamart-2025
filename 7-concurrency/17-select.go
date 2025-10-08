@@ -1,27 +1,44 @@
 package main
 
 import (
+	"fmt"
 	"sync"
-	"time"
 )
 
 func main() {
-	get := make(chan string)
-	post := make(chan string)
-	put := make(chan string)
+	get := make(chan string, 1)
+	post := make(chan string, 1)
+	put := make(chan string, 1)
 
 	wg := new(sync.WaitGroup)
 	wg.Go(func() {
-		time.Sleep(3 * time.Second)
+		//time.Sleep(3 * time.Second)
 		get <- "get"
+		
 	})
 
 	wg.Go(func() {
-		time.Sleep(1 * time.Second)
+		//time.Sleep(1 * time.Second)
 		post <- "post"
 	})
 
 	wg.Go(func() {
 		put <- "put"
 	})
+
+	//fmt.Println(<-get)
+	//fmt.Println(<-post)
+	//fmt.Println(<-put)
+	for i := 1; i <= 3; i++ {
+
+		select {
+		case x := <-get:
+			fmt.Println(x)
+		case x := <-post:
+			fmt.Println(x)
+		case x := <-put:
+			fmt.Println(x)
+		}
+	}
+	wg.Wait()
 }
