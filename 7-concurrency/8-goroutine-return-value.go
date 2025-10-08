@@ -5,8 +5,6 @@ import (
 	"sync"
 )
 
-// A send on an unbuffered channel can proceed if a receiver is ready.
-// A send on a buffered channel can proceed if there is room in the buffer.
 func main() {
 	wg := new(sync.WaitGroup)
 
