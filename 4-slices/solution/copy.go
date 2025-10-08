@@ -10,7 +10,7 @@ func main() {
 	b := make([]int, len(x), cap(x))
 	copy(b, x) // deep copy, copying the actual data
 	b[0] = 100
-	inspect.InspectSlice("b", b)
-	inspect.InspectSlice("x", x)
+	inspect.Slice("b", b)
+	inspect.Slice("x", x)
 
 }

@@ -7,7 +7,7 @@ func main() {
 
 	a = append(a, 10)
 
-	inspect.InspectSlice("a", a)
+	inspect.Slice("a", a)
 
 	copy()
 }

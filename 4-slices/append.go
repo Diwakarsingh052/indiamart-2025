@@ -16,9 +16,9 @@ func main() {
 	fmt.Println(len(s), cap(s), &s[0])
 
 	s = append(s, 10, 20)
-	inspect.InspectSlice("s", s)
+	inspect.Slice("s", s)
 	s = append(s, 100, 200)
-	inspect.InspectSlice("s", s)
+	inspect.Slice("s", s)
 	s = append(s, 300)
-	inspect.InspectSlice("s", s)
+	inspect.Slice("s", s)
 }
