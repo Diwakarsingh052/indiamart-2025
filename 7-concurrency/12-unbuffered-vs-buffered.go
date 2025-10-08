@@ -47,7 +47,7 @@ func unbuffered() {
 	// unbuffered channel will block the sender goroutine until the receiver is ready
 	// unbufferd channel is a synchronous way of communication
 	// good to create backpressure
-	// it has guarantee that values must be received by a receiver
+	// it has a guarantee that values must be received by a receiver
 	wg := new(sync.WaitGroup)
 	ch := make(chan int)
 	wg.Go(func() {
