@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// https://go.dev/doc/faq#methods_on_values_or_pointers
 type user struct {
 	name string
 	age  int
