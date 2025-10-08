@@ -25,18 +25,19 @@ func main() {
 
 		}
 		fmt.Println("all values sent")
+
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			wgTask.Wait() // waiting for workers to finish
+			close(ch)
+		}()
 		// sends a signal to stop the range
 
 		// once all the tasks are done then we would close the channel
 		// close signal range that no more values be sent
 		//and it can stop after receiving remaining values
 
-	}()
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		wgTask.Wait() // waiting for workers to finish
-		close(ch)
 	}()
 
 	wg.Add(1)
