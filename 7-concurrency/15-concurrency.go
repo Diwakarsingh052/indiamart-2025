@@ -14,6 +14,7 @@ func main() {
 	go func() {
 		defer wg.Done()
 		for i := 1; i <= 6; i++ {
+			// keeping track of workers with a dedicated waitgroup
 			wgTask.Add(1)
 			go func() {
 				defer wgTask.Done()
@@ -25,7 +26,9 @@ func main() {
 		}
 		fmt.Println("all values sent")
 		// sends a signal to stop the range
-		wgTask.Wait()
+
+		// once all the tasks are done then we would close the channel
+		wgTask.Wait() // waiting for workers to finish
 		close(ch)
 		// close signal range that no more values be sent
 		//and it can stop after receiving remaining values
