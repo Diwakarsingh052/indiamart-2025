@@ -7,9 +7,9 @@ import (
 )
 
 func main() {
-	wg := sync.WaitGroup{}
+	wg := &sync.WaitGroup{}
 	wg.Add(1) // add 1 to the counter
-	go helloV2(&wg)
+	go helloV2(wg)
 
 	fmt.Println("doing some important work")
 
