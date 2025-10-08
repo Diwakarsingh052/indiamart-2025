@@ -5,14 +5,24 @@ import (
 	"sync"
 )
 
+// BAD CODE AHEAD
+// don't use infinite for select with buffered channels
+// we can lose data
+// if you want to use a buffered channel,
+// then run goroutines and run range inside them to receive values
 func main() {
-	get := make(chan string)
-	post := make(chan string)
-	put := make(chan string)
+	get := make(chan string, 3)
+	post := make(chan string, 3)
+	put := make(chan string, 3)
+
 	done := make(chan struct{})
 
 	wg := new(sync.WaitGroup)
 	wgTask := new(sync.WaitGroup)
+
+	// buffered channel don't care about receivers
+	// in this code if done channel is closed before receiving
+	//then we would lose values
 
 	wgTask.Go(func() {
 		//time.Sleep(3 * time.Second)
@@ -35,6 +45,7 @@ func main() {
 		wgTask.Wait()
 		close(done)
 	})
+
 	wg.Go(func() {
 
 		for {
