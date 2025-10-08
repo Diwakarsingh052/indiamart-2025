@@ -19,7 +19,7 @@ func main() {
 		close(ch)
 		// close signal range that no more values be sent
 		//and it can stop after receiving remaining values
-		ch <- 10 // once the channel is closed, we can't send more values to it
+		//ch <- 10 // once the channel is closed, we can't send more values to it
 
 	})
 

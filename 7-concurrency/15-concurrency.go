@@ -3,16 +3,20 @@ package main
 import (
 	"fmt"
 	"sync"
-	"time"
 )
 
 func main() {
 	wg := new(sync.WaitGroup)
+	wgTask := new(sync.WaitGroup)
 
 	ch := make(chan int, 5)
+	wg.Add(1)
 	go func() {
+		defer wg.Done()
 		for i := 1; i <= 6; i++ {
+			wgTask.Add(1)
 			go func() {
+				defer wgTask.Done()
 				// fan out pattern
 				// spinning n number of goroutines for n tasks
 				ch <- i
@@ -21,18 +25,20 @@ func main() {
 		}
 		fmt.Println("all values sent")
 		// sends a signal to stop the range
-		//close(ch)
+		wgTask.Wait()
+		close(ch)
 		// close signal range that no more values be sent
 		//and it can stop after receiving remaining values
 
 	}()
 
+	wg.Add(1)
 	go func() {
-
+		defer wg.Done()
 		// it would run infinitely, channel needs to be closed to stop this range
 		// if channel is closed range will receive remaining values and stop
 		for i := range ch { // range over channel is a receive operation
-			time.Sleep(1 * time.Second)
+			//time.Sleep(1 * time.Second)
 			fmt.Println(i, "range 1")
 		}
 	}()
