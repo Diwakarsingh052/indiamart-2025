@@ -9,5 +9,4 @@ func main() {
 
 	inspect.Slice("a", a)
 
-	copy()
 }
