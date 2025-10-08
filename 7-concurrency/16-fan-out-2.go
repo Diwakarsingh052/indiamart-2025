@@ -41,6 +41,18 @@ func main() {
 	}()
 
 	wg.Add(1)
+
+	// worker pool pattern,
+	// multiple goroutines are working on the same task to receive and process
+	go func() {
+		defer wg.Done()
+		// it would run infinitely, channel needs to be closed to stop this range
+		// if channel is closed range will receive remaining values and stop
+		for i := range ch { // range over channel is a receive operation
+			//time.Sleep(1 * time.Second)
+			fmt.Println(i, "range 1")
+		}
+	}()
 	go func() {
 		defer wg.Done()
 		// it would run infinitely, channel needs to be closed to stop this range
