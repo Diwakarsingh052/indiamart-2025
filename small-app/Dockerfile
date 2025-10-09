@@ -1,5 +1,5 @@
 # micro-1/Dockerfile
-# docker compose up --build
+
 
 # Stage 1: Build the Go application
 FROM golang:1.25.1-alpine3.22 AS builder
