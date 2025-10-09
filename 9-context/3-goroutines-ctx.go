@@ -27,6 +27,8 @@ func main() {
 
 	}
 
+	wg.Wait()
+
 }
 
 func slowFunc() int {
