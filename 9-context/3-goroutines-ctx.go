@@ -19,9 +19,13 @@ func main() {
 		ch <- i
 	})
 
+	// select would block until either of the cases is ready
 	select {
+	// if timeout happens, then receiver would move one
 	case <-ctx.Done():
 		fmt.Println(ctx.Err())
+
+		// receiving the value no
 	case x := <-ch:
 		fmt.Println("received", x)
 
