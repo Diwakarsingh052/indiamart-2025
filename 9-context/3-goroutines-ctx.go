@@ -15,7 +15,7 @@ func main() {
 	defer cancel()
 
 	wg.Go(func() {
-		i := slowFunc()
+		i := slowFunc(ctx)
 		select {
 		case <-ctx.Done():
 			fmt.Println("send cancelled,", ctx.Err())
@@ -42,12 +42,19 @@ func main() {
 
 }
 
-func slowFunc() int {
+func slowFunc(ctx context.Context) int {
 	// use select to check if the context is cancelled
 	// if cancelled, then rollback the changes
 	// use simple print statements to show the flow of the program
+
 	time.Sleep(2 * time.Second)
 	fmt.Println("slowFunc() ran and changed 10 files")
+	select {
+	case <-ctx.Done():
+		fmt.Println("rollback the changes")
+		return 0
+	default:
+	}
 	return 10
 
 }
