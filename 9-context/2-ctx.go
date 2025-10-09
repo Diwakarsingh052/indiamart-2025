@@ -33,7 +33,7 @@ func Slow(ctx context.Context, msg string) (int, error) {
 		return 0, ctx.Err()
 	default:
 		// rollback your previous work if you don't want to persist the changes
-	}
+	
 		fmt.Println("client is still alive")
 	}
 
