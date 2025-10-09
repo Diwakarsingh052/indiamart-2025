@@ -14,3 +14,12 @@ type NewUser struct {
 	Age      int64  `json:"age" binding:"required,min=18"`
 	Password string `json:"password" binding:"required,max=60"`
 }
+
+/*
+{
+	  "name": "John Doe",
+	  "email": "d@email.com",
+	  "age": 19,
+	  "password": "password123"
+	}
+*/
