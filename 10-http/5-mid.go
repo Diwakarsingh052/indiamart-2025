@@ -36,3 +36,5 @@ func Mid(next http.HandlerFunc) http.HandlerFunc {
 //
 //	}
 //}
+
+//https://codeshare.io/G6ddLN
