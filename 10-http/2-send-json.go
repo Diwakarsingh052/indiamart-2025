@@ -6,6 +6,8 @@ import (
 	"net/http"
 )
 
+// curl localhost:8080/json
+
 // Fields must be exported for json to work
 type user struct {
 	// use field tags to specify the field name or ignore fields
