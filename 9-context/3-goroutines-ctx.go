@@ -21,7 +21,7 @@ func main() {
 
 	// select would block until either of the cases is ready
 	select {
-	// if timeout happens, then receiver would move one
+	// if timeout happens, then the receiver would move on
 	case <-ctx.Done():
 		fmt.Println(ctx.Err())
 
