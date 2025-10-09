@@ -5,3 +5,10 @@
 // go run var.go // to run programs while developing
 
 // go run . // to run all the files in current directory
+
+// go get module name [to download a module]
+
+/ get all required external dependencies of a project
+// fix module errors
+// remove unused modules
+go mod tidy
