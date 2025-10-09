@@ -47,7 +47,7 @@ func slowFunc(ctx context.Context) int {
 	// if cancelled, then rollback the changes
 	// use simple print statements to show the flow of the program
 
-	time.Sleep(2 * time.Second)
+	time.Sleep(3 * time.Second)
 	fmt.Println("slowFunc() ran and changed 10 files")
 	select {
 	case <-ctx.Done():
