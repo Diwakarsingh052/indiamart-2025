@@ -60,6 +60,8 @@ type Glossary struct {
 }
 
 func main() {
+	http.HandleFunc("/process-json", processJson)
+	http.ListenAndServe(":8080", nil)
 	// start http server
 	// create one route to receive json data
 	//
