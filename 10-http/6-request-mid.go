@@ -35,14 +35,21 @@ func ReqIdMid(next http.HandlerFunc) http.HandlerFunc {
 	}
 }
 
-func Hello(w http.ResponseWriter, r *http.Request, uuid string) {
-	ctx.Value(reqIdKey)
-	fmt.Println(uuid, "hello")
-	InternalProcess()
+func Hello(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	// type assertion
+	// check what is the type of the value stored in the interface
+	// use ok variant to avoid panic
+	reqId, ok := ctx.Value(reqIdKey).(string)
+	if !ok {
+		reqId = "unknown"
+	}
+	fmt.Println(reqId, "hello")
+	InternalProcess(reqId)
 	w.Write([]byte("hello"))
 }
 
-func InternalProcess() {
-	fmt.Println("internal process", uuid)
+func InternalProcess(reqId string) {
+	fmt.Println("internal process", reqId)
 	// access uuid here
 }
