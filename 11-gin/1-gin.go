@@ -18,9 +18,11 @@ func main() {
 	v1 := r.Group("/v1")
 
 	{
-		// this would apply middleware to all the routes in this group
 
 		v1.GET("/user", User) // /v1/user
+
+		// this would apply middleware to all the routes in this group
+		// after the below line
 		v1.Use(gin.Logger(), gin.Recovery())
 		v1.GET("/posts", Posts) // /v1/posts
 	}
