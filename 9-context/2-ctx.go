@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"database/sql"
 	"strconv"
 	"time"
 )
@@ -13,7 +14,7 @@ func Slow(ctx context.Context, msg string) (int, error) {
 	if err != nil {
 		return 0, err
 	}
-
+	sql.DB{}.ExecContext()
 	return i, nil
 
 }
