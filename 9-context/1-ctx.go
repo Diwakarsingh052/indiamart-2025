@@ -18,6 +18,11 @@ func main() {
 	// create a new empty context // which is an empty container
 
 	ctx := context.Background()
+
+	// TODO is a context with no values
+	// but it gives a signal that we are not sure what context to use , empty or from somewhere else
+	//ctx := context.TODO()
+
 	ctx, cancel := context.WithTimeout(ctx, time.Second*5)
 	defer cancel() // cancel cleanup the resources taken by the context
 
