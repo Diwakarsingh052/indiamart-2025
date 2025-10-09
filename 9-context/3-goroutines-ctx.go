@@ -25,7 +25,7 @@ func main() {
 	case <-ctx.Done():
 		fmt.Println(ctx.Err())
 
-		// receiving the value no
+		// receiving the value normally
 	case x := <-ch:
 		fmt.Println("received", x)
 
