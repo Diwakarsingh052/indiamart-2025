@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option go_package = "client/gen/proto";
+
+//unary
+message User {
+  // don't change field numbers, that is a breaking change
+  // we can change the field names
+  string name = 1;
+  string email = 2;
+  string password = 3;
+  repeated string roles = 4; // slice is repeated
+}
+
+
+//below msg is created to pass it as a param to Signup rpc
+// Practice: Name of the rpc and add Request in the end
+//.. e.g. below
+message SignupRequest {
+  User user = 1;
+//  string id = 2;
+}
+
+message SignupResponse {
+  string result = 1;
+}
+
+
+//proto for server streaming
+message Post {
+  string title = 1;
+  string author = 2;
+  string body = 3;
+}
+
+
+message GetPostsRequest {
+  fixed64 user_id = 1;
+}
+message GetPostsResponse {
+  repeated Post posts = 1; // slice of post
+}
+
+
+service UserService {
+  //unary rpc
+  rpc Signup(SignupRequest) returns (SignupResponse);
+
+  //server streaming
+  rpc GetPosts(GetPostsRequest) returns (stream GetPostsResponse);
+
+}
