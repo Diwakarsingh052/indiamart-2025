@@ -11,11 +11,11 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-type USerService struct {
+type UserService struct {
 	pb.UnimplementedUserServiceServer
 }
 
-func (us *USerService) Signup(ctx context.Context,
+func (us *UserService) Signup(ctx context.Context,
 	req *pb.SignupRequest) (*pb.SignupResponse, error) {
 	var u models.User
 
