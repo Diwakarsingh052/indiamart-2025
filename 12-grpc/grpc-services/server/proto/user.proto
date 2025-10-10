@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "server/gen/proto";
+
+//unary
+message User {
+  // don't change field numbers, that is a breaking change
+  // we can change the field names
+  string name = 1;
+  string email = 2;
+  string password = 3;
+  repeated string roles = 4; // slice is repeated
+}
+
+message SignupRequest {
+  User user = 1;
+  //  string id = 2;
+}
+
+message SignupResponse {
+  string result = 1;
+}
+
+service UserService {
+  rpc Signup(SignupRequest) returns (SignupResponse) ;
+}
